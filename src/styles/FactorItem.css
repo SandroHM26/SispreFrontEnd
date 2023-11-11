@@ -1,0 +1,26 @@
+.factor {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .factor-name {
+    border: 1px solid #039BE5;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    width: 300px; /* O el ancho que mejor se ajuste */
+    flex-shrink: 0;
+  }
+  
+  .radio-group {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  

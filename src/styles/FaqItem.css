@@ -1,0 +1,18 @@
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-item textarea {
+    background-color: #f2f2f2;
+    width: 90%;  /* Asegura que el textarea ocupe todo el ancho disponible */
+    overflow-y: hidden;  /* Oculta el scrollbar vertical */
+    resize: none;  /* Evita que el usuario pueda cambiar el tamaño */
+    border: 1px solid #ccc;  /* Estilo de borde opcional */
+    padding: 8px;  /* Espacio interno opcional */
+    box-sizing: border-box;  /* Asegura que el padding no aumente el tamaño total del textarea */
+}
+
+.faq-item p {
+    text-align: left;
+    margin-bottom: 10px;  /* Añade un pequeño margen para separar la pregunta de la respuesta */
+}

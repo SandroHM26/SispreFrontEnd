@@ -1,0 +1,122 @@
+.main-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.consulta-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 40px;
+    text-align: left;
+}
+
+h2 {
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.sintoma-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 40%;  /* Ajusta este valor según tu preferencia */
+    
+    margin-right: 10px;
+    
+}
+
+.sintoma-input select {
+    min-width: 80%;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    flex: 1;
+}
+
+.lista-sintomas li {
+    display: flex;
+    flex-direction: row ; /* Cambia a dirección de columna */
+    align-items: center; /* Alinea a la izquierda */
+    justify-content: space-between;
+    margin-bottom: 10px;
+    /* Esto permite ubicar el número del síntoma correctamente */
+}
+
+
+.botones-consulta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.botones-consulta h2 {
+    margin: 0;
+    margin-right: 500px;
+}
+
+.botones-consulta button {
+    width: 100px; /* Ajuste para limitar el ancho del botón */
+    margin-left: 10px; /* Espacio entre botones */
+}
+
+.lista-sintomas li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-right: 10px; 
+}
+
+.opciones-tos {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.opciones-tos label {
+    margin-right: 20px;
+}
+
+.sintoma-text {
+    border: 1px solid #ccc;  
+    padding: 10px;      
+    margin-right: 30px;
+    width: 40%; /* Establecer un ancho fijo para el campo del síntoma */
+    overflow: hidden; /* Prevenir el desbordamiento del texto */
+    text-overflow: ellipsis; /* Mostrar puntos suspensivos si el texto es muy largo */
+    white-space: nowrap; /* Prevenir el salto de línea */
+
+}
+.radio-group {
+    flex-grow: 1;
+    margin-left: -10px;  /* Distancia entre el síntoma y el botón de radio */
+    display: flex;          
+    align-items: center;
+    gap: 10px;
+}
+
+.sintoma-number {
+    position: absolute; /* Posicionamiento absoluto para el número del síntoma */
+    top: -20px; /* Desplazamiento hacia arriba */
+    left: 0; /* Alineación a la izquierda */
+    font-weight: bold; /* Puede ajustar según prefieras */
+    left: -20px;
+    padding: 0 5px;
+}
+
+.sintoma-data {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 112%; /* Uso del 100% del espacio disponible */
+}
+
+.error-message {
+    color: red;
+    margin: 10px 0;
+}
