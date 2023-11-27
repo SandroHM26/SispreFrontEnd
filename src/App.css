@@ -24,6 +24,9 @@
   
 }
 
+.layout-container.registro { /* Asegúrate de que la clase aquí coincida con la que usas en el estado */
+  display: block;
+}
 
 .main-content {
   flex-grow: 1;

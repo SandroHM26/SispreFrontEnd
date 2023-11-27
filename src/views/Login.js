@@ -3,14 +3,19 @@ import Button from '../components/Button';
 import TextField from '../components/TextField';
 import '../styles/Login.css';
 
-const Login = ({ onCrearCuenta,onLogin  }) => {
+const Login = ({ onCrearCuenta, onLogin, error, setError  }) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(''); 
+   
 
     const handleLoginClick = () => {
-        onLogin(username, password, setError); // Pasar setUsername para que App.js pueda modificar el estado
+        onLogin(username, password); // Pasar setUsername para que App.js pueda modificar el estado
+    };
+
+    const handleCrearCuentaClick = () => {
+        console.log("Botón Crear Cuenta clickeado");
+        onCrearCuenta();
     };
     return (
         <div className="container"> {/* Cambiado a container para coincidir con CSS */}
@@ -38,7 +43,7 @@ const Login = ({ onCrearCuenta,onLogin  }) => {
                 
                 <div className="buttons-container">
                     <Button text="Iniciar Sesión" variant="primary" onClick={handleLoginClick} />
-                    <Button text="Crear Cuenta" variant="secondary" onClick={onCrearCuenta} />
+                    <Button text="Crear Cuenta" variant="secondary" onClick={handleCrearCuentaClick} />
                 </div>
                 
                 <p className="forgot-password">¿Olvidaste tu contraseña?</p>

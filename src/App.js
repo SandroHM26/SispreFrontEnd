@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { ConsultaProvider  } from './rules/ConsultaContext';
 import Sidebar from './components/Sidebar'; // Asegúrate de que la ruta sea correcta
 import Consulta from './views/Consulta';
@@ -14,6 +15,9 @@ function App() {
     const [view, setView] = useState('login');  // Este estado determina qué vista está activa
     const [isLogged, setIsLogged] = useState(false);
     const [activeSidebarButton, setActiveSidebarButton] = useState('dashboard');
+    const [error, setError] = useState('');
+    const [nombreUsuario, setNombreUsuario] = useState(''); // Estado para el nombre del usuario
+    const [sexoUsuario, setSexoUsuario] = useState('');
     // Función para manejar el cambio de vista
 
 
@@ -43,24 +47,24 @@ function App() {
         setView('main'); // O cualquier otra vista que consideres como principal después del login
     };
 
-    const handleLogin = (username, password, setError) => {
-        const validUsers = [
-            { username: 'sandrohm26', password: 'Porcorex123' },
-            { username: 'eseBoy', password: '12345' },
-            { username: '', password: '' },
-            // Agrega más usuarios según sea necesario
-        ];
+    const handleLogin = async (username, password) => {
+        try {
+            const response = await axios.post('http://localhost:8080/api/auth/login', {
+                nombreUsuario: username,
+                contrasena: password
+            });
 
-        const isValidUser = validUsers.some(user => user.username === username && user.password === password);
-
-        if (isValidUser) {
+            // Aquí manejarías la respuesta del login, como almacenar el token si es necesario
+            setNombreUsuario(response.data.nombrePaciente);
+            setSexoUsuario(response.data.sexo);
             setIsLogged(true);
             setView('dashboard');
             setError('');
-        } else {
-            setError('Usuario o contraseña incorrecta'); // Utilizar setError para mostrar mensaje de error
+        } catch (error) {
+            setError('Usuario o contraseña incorrecta');
+            console.error('Error en el login:', error);
         }
-    }
+    };
 
     const handleGuardar = () => {
       setView('login');
@@ -71,6 +75,11 @@ function App() {
       
     };
   
+    const handleCrearCuenta = () => {
+        setView('registro');
+        console.log("Cambiando a vista de registro");
+    };
+
 
     return (
     <ConsultaProvider>  
@@ -90,9 +99,9 @@ function App() {
               )}
             
               <div className="main-content">
-                  {view === 'login' && <Login onCrearCuenta={() => setView('registro')} onLogin={handleLogin} />}
+                  {view === 'login' && <Login onCrearCuenta={handleCrearCuenta} onLogin={handleLogin} error={error} setError={setError} />}
                   {view === 'registro' && <Registro onGuardar={handleGuardar} />}
-                  {view === 'dashboard' && <Dashboard onLogout={handleLogout} onConsulta={() => setView('consulta')} view={view}/>}
+                  {view === 'dashboard' && <Dashboard nombreUsuario={nombreUsuario} sexoUsuario={sexoUsuario} onLogout={handleLogout} onConsulta={() => setView('consulta')} />}
                   {view === 'consulta' && <Consulta onSiguiente={handleFactores}/>}
                   {view === 'factores' && <Factor onConsultar={handleResultados} />}
                   {view === 'resultados' && <Resultados />}
