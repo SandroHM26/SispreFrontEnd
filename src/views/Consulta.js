@@ -9,7 +9,8 @@ const listaSintomas = {
     DolorMuscular: [],
     DolorGarganta: [],
     OpresionToracica: [],
-    Disnea: []
+    Disnea: []    
+     
   };
 
 const Consulta = ({ onCancelar,view,onLogout,onConsulta,onSiguiente }) => {
